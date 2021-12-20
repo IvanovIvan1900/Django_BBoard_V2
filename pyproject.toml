@@ -8,6 +8,7 @@ authors = ["IvanovIvan1900 <ivanovivan159753@yandex.ru>"]
 python = "^3.8"
 Django = "^4.0"
 django-bootstrap4 = "^21.1"
+autopep8 = "^1.6.0"
 
 [tool.poetry.dev-dependencies]
 
