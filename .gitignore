@@ -4,3 +4,4 @@ secret_data.py
 poetry.lock
 launch.json
 bboard.data
+*.log
