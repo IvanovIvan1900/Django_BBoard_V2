@@ -6,9 +6,11 @@ authors = ["IvanovIvan1900 <ivanovivan159753@yandex.ru>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-Django = "^4.0"
+Django = "^3.0"
 django-bootstrap4 = "^21.1"
 autopep8 = "^1.6.0"
+easy-thumbnails = "^2.8"
+django-cleanup = "^5.2.0"
 
 [tool.poetry.dev-dependencies]
 
