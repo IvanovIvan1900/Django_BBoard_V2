@@ -46,7 +46,13 @@ THUMBNAIL_ALIASES = {
 }
 THUMBNAIL_BASEDIR = 'thumbnails'
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 INSTALLED_APPS = [
+    'jazzmin',
+    'crispy_forms',
     'main.apps.MainConfig',
     'bootstrap4',
     'django.contrib.auth',
@@ -56,10 +62,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_cleanup',
-    'easy_thumbnails',    
+    'easy_thumbnails',
+    'captcha',
+    "debug_toolbar",
+    'debugtools',
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,6 +93,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'main.middlewares.bboard_context_processor',
+            ],
+            'builtins': [                                     # Add this section
+                "debugtools.templatetags.debugtools_tags",   # Add this line
             ],
         },
     },

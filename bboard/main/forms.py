@@ -6,6 +6,8 @@ from .apps import user_registered
 from .models import SuperRubric, SubRubric
 from django.forms import inlineformset_factory
 from .models import Bb, AdditionalImage
+from .models import Comment
+from captcha.fields import CaptchaField
 
 class ChangeUserInfoForm(forms.ModelForm):
     email = forms.EmailField(required=True,
@@ -75,3 +77,17 @@ class BbForm(forms.ModelForm):
         fields = '__all__'
         widgets = {'author': forms.HiddenInput}
 AIFormSet = inlineformset_factory(Bb, AdditionalImage, fields='__all__')
+
+class UserCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ('is_active',)
+        widgets = {'bb': forms.HiddenInput}
+
+class GuestCommentForm(forms.ModelForm):
+    captcha = CaptchaField(label='Введите текст с картинки',
+    error_messages={'invalid': 'Неправильный текст'})
+    class Meta:
+        model = Comment
+        exclude = ('is_active',)
+        widgets = {'bb': forms.HiddenInput}

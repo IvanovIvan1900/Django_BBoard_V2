@@ -6,6 +6,7 @@ from .models import AdvUser
 from .forms import SubRubricForm
 from .utilities import send_activation_notification
 from .models import Bb, AdditionalImage
+from .models import Comment
 # Register your models here.
 
 class NonactivatedFilter(admin.SimpleListFilter):
@@ -79,3 +80,8 @@ class BbAdmin(admin.ModelAdmin):
             'contacts', 'image', 'is_active')
     inlines = (AdditionalImageInline,)
 admin.site.register(Bb, BbAdmin)
+
+class AdminComment(admin.ModelAdmin):
+    list_display = ('bb', 'author', 'is_active', 'created_at')
+    fields = ('bb', 'author', 'content', 'is_active')
+admin.site.register(Comment, AdminComment)
